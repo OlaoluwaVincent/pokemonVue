@@ -10,19 +10,16 @@
       <span class="second">{{ pokemonData.base_experience }} E</span>
     </div>
 
-    <div class="abilities">
-      <p v-for="(ability, key) in abilities" :key="key" class="ability">
-        {{ ability }}
-      </p>
-    </div>
+    <PokemonAbility :abilities="abilities" />
 
-    <button class="add">Add to Team</button>
-    <button class="remove">Remove from Team</button>
+    <TeamCallToAction />
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue';
+import PokemonAbility from '@/components/PokemonAbility.vue';
+import TeamCallToAction from '@/components/TeamCallToAction.vue';
 
 const props = defineProps({
   pokemonData: {
@@ -79,38 +76,5 @@ const abilities = computed(() =>
 .imgWrapper .second {
   bottom: 0;
   left: 2px;
-}
-
-.abilities {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  text-transform: capitalize;
-}
-
-.ability {
-  background: var(--dark-text-color);
-  color: var(--mid-color);
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 10px;
-}
-
-button {
-  border: none;
-  outline: none;
-  color: var(--text-color);
-  text-transform: capitalize;
-  font-weight: 500;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.add {
-  background: var(--green);
-}
-
-.remove {
-  background: var(--bg-color);
 }
 </style>

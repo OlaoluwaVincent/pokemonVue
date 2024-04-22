@@ -11,12 +11,12 @@
 <script setup>
 import axios from 'axios';
 import { defineProps, onMounted, ref } from 'vue';
+import PokemonDetailsHeader from '@/components/PokemonDetailsHeader.vue';
+import PokemonDetailsContainer from '@/components/PokemonDetailsContainer.vue';
+
 const loading = ref(false);
 const pokemonData = ref(null);
 const errorMessage = ref('');
-
-import PokemonDetailsHeader from '@/components/PokemonDetailsHeader.vue';
-import PokemonDetailsContainer from '@/components/PokemonDetailsContainer.vue';
 
 //Props ID:String  is gotten from the Params of the url.
 const props = defineProps({
