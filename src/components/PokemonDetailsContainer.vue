@@ -7,12 +7,16 @@
         class="result__img"
       />
       <span class="first">{{ pokemonData.weight }} G</span>
-      <span class="second">{{ pokemonData.base_experience }} E</span>
+      <span class="second">{{ pokemonData.base_experience }} PT.</span>
     </div>
 
     <PokemonAbility :abilities="abilities" />
 
-    <TeamCallToAction />
+    <TeamCallToAction :pokemon="pokemonData" />
+
+    <PokemonMoves :moves="moves" />
+
+    <PokemonStat :stats="stats" />
   </section>
 </template>
 
@@ -20,6 +24,8 @@
 import { computed } from 'vue';
 import PokemonAbility from '@/components/PokemonAbility.vue';
 import TeamCallToAction from '@/components/TeamCallToAction.vue';
+import PokemonMoves from '@/components/PokemonMoves.vue';
+import PokemonStat from '@/components/PokemonStat.vue';
 
 const props = defineProps({
   pokemonData: {
@@ -27,22 +33,36 @@ const props = defineProps({
     required: true,
   },
 });
+
 const abilities = computed(() =>
   props.pokemonData.abilities.map((ability) =>
     ability.ability.name.split('-').join(' ')
   )
+);
+
+const moves = computed(() =>
+  props.pokemonData.moves.map((move) => move.move.name)
+);
+
+const stats = computed(() =>
+  props.pokemonData.stats.map((stat) => ({
+    statValue: stat.base_stat,
+    statName: stat.stat.name,
+  }))
 );
 </script>
 
 <style scoped>
 .details {
   background: var(--light-bg-color);
+  padding: 10px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: center;
+  height: 100%;
 }
 
 .imgWrapper {
@@ -58,22 +78,23 @@ const abilities = computed(() =>
   margin-inline: auto;
 }
 
-.imgWrapper .first,
-.imgWrapper .second {
+.first,
+.second {
   position: absolute;
   background: var(--text-color);
   color: var(--mid-color);
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 14px;
   padding: 4px 8px;
   border-radius: 20px;
 }
 
-.imgWrapper .first {
+.first {
   top: 0;
   right: 2px;
 }
 
-.imgWrapper .second {
+.second {
   bottom: 0;
   left: 2px;
 }

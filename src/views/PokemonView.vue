@@ -10,7 +10,7 @@
 
 <script setup>
 import axios from 'axios';
-import { defineProps, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import PokemonDetailsHeader from '@/components/PokemonDetailsHeader.vue';
 import PokemonDetailsContainer from '@/components/PokemonDetailsContainer.vue';
 

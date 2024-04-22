@@ -1,9 +1,33 @@
 <template>
-  <button class="add">Add to Team</button>
-  <button class="remove">Remove from Team</button>
+  <button
+    v-if="pokemonStore.checkExisting(pokemon.id)"
+    class="remove"
+    @click="handleRemove"
+  >
+    Remove from Team
+  </button>
+  <button v-else class="add" @click="handleAdd">Add to Team</button>
 </template>
 
-<script setup></script>
+<script setup>
+import { usePokemonTeamStore } from '@/stores/pokemonTeam';
+const pokemonStore = usePokemonTeamStore();
+
+const props = defineProps({
+  pokemon: {
+    type: Object,
+    required: true,
+  },
+});
+
+const handleRemove = () => {
+  pokemonStore.removeFromTeam(props.pokemon.id);
+};
+
+const handleAdd = () => {
+  pokemonStore.addTeam(props.pokemon);
+};
+</script>
 
 <style scoped>
 button {

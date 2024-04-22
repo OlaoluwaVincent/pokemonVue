@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, computed, watch, watchEffect } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   pokemonData: {

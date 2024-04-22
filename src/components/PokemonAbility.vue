@@ -1,13 +1,17 @@
 <template>
-  <div class="abilities">
-    <p v-for="(ability, key) in abilities" :key="key" class="ability">
-      {{ ability }}
-    </p>
-  </div>
+  <aside>
+    <SectionTitle title="Abilities" />
+    <div class="abilities">
+      <p v-for="(ability, key) in abilities" :key="key" class="ability">
+        {{ ability }}
+      </p>
+    </div>
+  </aside>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import SectionTitle from '@/components/SectionTitle.vue';
 
 const props = defineProps({
   abilities: {
@@ -21,6 +25,7 @@ const abilities = ref(props.abilities);
 <style scoped>
 .abilities {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   align-items: center;
   text-transform: capitalize;
