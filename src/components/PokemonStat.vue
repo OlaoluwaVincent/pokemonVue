@@ -69,6 +69,11 @@ span {
   }
 }
 
+@media (width<768px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (width<540px) {
   .wrapper {
     grid-template-columns: 1fr;
