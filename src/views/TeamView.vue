@@ -36,7 +36,8 @@ const pokemonStore = usePokemonTeamStore();
   grid-template-rows: auto;
   gap: 16px;
   padding-block: 30px;
-  height: 100%;
+  padding-inline: 20px;
+  /* height: 100%; */
   align-content: center;
 }
 
@@ -49,15 +50,13 @@ a {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-inline: auto;
+  max-width: 250px;
   width: 100%;
   background: var(--dark-text-color);
   gap: 16px;
-  padding-top: 20px;
-  height: 260px;
-  /* border: 1px solid var(--dark-text-color); */
 }
 
 .card__header,
@@ -77,6 +76,7 @@ a {
   font-weight: 500;
   text-transform: capitalize;
 }
+
 .card__sub-title {
   font-size: 13px;
   font-weight: 300;
@@ -94,6 +94,12 @@ button {
   background: var(--mid-color);
   color: var(--text-color);
   padding: 6px 12px;
+  cursor: pointer;
+  transition: all ease-in 60ms;
+}
+
+button:hover {
+  opacity: 0.9;
 }
 
 a {
@@ -104,7 +110,6 @@ a {
 @media (width<1024px) {
   .container {
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 20px 30px;
     place-content: center;
   }
 }
@@ -117,6 +122,7 @@ a {
     width: 90%;
   }
 }
+
 @media (width<540px) {
   .container {
     grid-template-columns: 1fr;

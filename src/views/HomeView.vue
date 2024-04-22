@@ -13,7 +13,7 @@ const resData = (res) => {
 <template>
   <section class="homepage">
     <h1>Pokenmon World</h1>
-    <p>Search for a Pokenmon (1-1000)</p>
+    <p>Search for a Pokenmon (1-1025)</p>
 
     <SearchPokemon @pokemonAvailable="resData" />
     <div v-if="pokemonData && pokemonData.name">

@@ -59,6 +59,12 @@ li {
 li:last-child {
   border: none;
 }
+
+p {
+  cursor: pointer;
+  /* color: var(--mid-color); */
+}
+
 @media (width < 540px) {
   li {
     font-size: 12px;
