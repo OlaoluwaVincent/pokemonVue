@@ -38,4 +38,12 @@ const abilities = ref(props.abilities);
   padding: 4px 8px;
   border-radius: 10px;
 }
+
+@media (width < 540px) {
+  .abilities {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 12px;
+  }
+}
 </style>

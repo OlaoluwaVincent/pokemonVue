@@ -2,21 +2,41 @@
   <aside>
     <SectionTitle title="Moves" />
     <ul>
-      <li v-for="(move, key) in moves" :key="key">
+      <li v-for="(move, key) in dataToShow" :key="key">
         {{ move }}
       </li>
     </ul>
+    <p @click="handleToggleShow" v-if="more">show less...</p>
+    <p @click="handleToggleShow" v-else>show more...</p>
   </aside>
 </template>
 
 <script setup>
 import SectionTitle from '@/components/SectionTitle.vue';
+import { computed, ref } from 'vue';
 const props = defineProps({
   moves: {
-    type: Object,
+    type: Array,
     required: true,
   },
 });
+const more = ref(false);
+
+const half = computed(() => {
+  return props.moves.slice(0, 15);
+});
+
+const dataToShow = ref(half.value);
+
+const handleToggleShow = () => {
+  if (dataToShow.value.length === half.value.length) {
+    dataToShow.value = props.moves;
+    more.value = true;
+  } else {
+    dataToShow.value = half.value;
+    more.value = false;
+  }
+};
 </script>
 
 <style scoped>
@@ -38,5 +58,10 @@ li {
 
 li:last-child {
   border: none;
+}
+@media (width < 540px) {
+  li {
+    font-size: 12px;
+  }
 }
 </style>
